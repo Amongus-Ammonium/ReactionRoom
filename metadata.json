@@ -1,0 +1,6 @@
+{
+  "name": "ChemiVerse - Molecular Reaction Lab",
+  "description": "An interactive elements and compounds explorer with drag-and-drop fusion, 500+ synthesizable chemicals, realistic reaction chemistry, and progression tasks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
