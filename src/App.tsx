@@ -334,11 +334,11 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 lg:p-6 flex flex-col">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 lg:p-5 flex flex-col min-h-0">
         {activeTab === 'lab' && (
-          <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-            {/* Left Drawer: Element Shelf (4 cols) */}
-            <div className="lg:col-span-3 order-2 lg:order-1 flex flex-col">
+          <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start lg:items-stretch lg:h-[calc(100vh-5.8rem)] lg:min-h-[640px] lg:max-h-[880px] min-h-0">
+            {/* Left Drawer: Element Shelf (3 cols) */}
+            <div className="lg:col-span-3 order-2 lg:order-1 flex flex-col h-[480px] lg:h-full min-h-0">
               <ElementShelf
                 unlockedElements={unlockedElements}
                 onAddElement={(el) => addItemToCrucible(el.id, 'element')}
@@ -347,7 +347,7 @@ export default function App() {
             </div>
 
             {/* Center: Crucible Reaction Chamber (5 cols) */}
-            <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col">
+            <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col lg:h-full min-h-0">
               <Crucible
                 slots={slots}
                 onRemoveSlot={handleRemoveSlot}
@@ -368,7 +368,7 @@ export default function App() {
             </div>
 
             {/* Right Drawer: Discovered Compounds Reagents (4 cols) */}
-            <div className="lg:col-span-4 order-3 flex flex-col">
+            <div className="lg:col-span-4 order-3 flex flex-col h-[480px] lg:h-full min-h-0">
               <CompoundShelf
                 discoveredCompounds={discoveredCompounds}
                 onAddCompound={(comp) => addItemToCrucible(comp.id, 'compound')}

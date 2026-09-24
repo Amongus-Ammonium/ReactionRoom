@@ -28,3 +28,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.8);
 }
+
+/* Stable scrolling containers to eliminate layout shifts */
+.shelf-scroll-area {
+  overflow-anchor: none;
+  overscroll-behavior: contain;
+}

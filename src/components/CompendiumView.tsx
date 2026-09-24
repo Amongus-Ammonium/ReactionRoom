@@ -227,7 +227,7 @@ export const CompendiumView: React.FC<CompendiumViewProps> = ({
       {inspectedCompound && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
           <div
-            className="relative w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6 md:p-8"
+            className="relative w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto custom-scrollbar"
             style={{ boxShadow: `0 0 50px ${inspectedCompound.color}30` }}
           >
             {(() => {

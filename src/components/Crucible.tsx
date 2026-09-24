@@ -129,7 +129,7 @@ export const Crucible: React.FC<CrucibleProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-900/60 rounded-2xl border border-slate-800 p-4 lg:p-6 shadow-2xl relative overflow-hidden backdrop-blur-md">
+    <div className="flex flex-col h-full bg-slate-900/60 rounded-2xl border border-slate-800 p-4 lg:p-5 shadow-2xl relative overflow-y-auto lg:overflow-visible backdrop-blur-md custom-scrollbar">
       {/* Background ambient reactor glow */}
       <div
         className={`absolute -top-32 -left-32 w-80 h-80 rounded-full blur-3xl pointer-events-none transition-all duration-700 ${
@@ -143,7 +143,7 @@ export const Crucible: React.FC<CrucibleProps> = ({
       <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full blur-3xl pointer-events-none bg-purple-600/10" />
 
       {/* Header bar */}
-      <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3 z-10 gap-2">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3 z-10 gap-2 shrink-0">
         <div>
           <h2 className="text-sm font-semibold tracking-wide text-slate-200 uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
@@ -407,7 +407,7 @@ export const Crucible: React.FC<CrucibleProps> = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`flex-1 min-h-[240px] md:min-h-[280px] rounded-2xl border-2 border-dashed transition-all duration-300 relative flex flex-col items-center justify-center p-6 text-center ${
+        className={`flex-1 min-h-[190px] max-h-[320px] rounded-2xl border-2 border-dashed transition-all duration-300 relative flex flex-col items-center justify-center p-4 sm:p-5 text-center overflow-hidden ${
           isDragOver
             ? 'border-cyan-400 bg-cyan-950/30 shadow-[0_0_30px_rgba(6,182,212,0.3)] scale-[1.01]'
             : slots.length > 0
@@ -442,29 +442,29 @@ export const Crucible: React.FC<CrucibleProps> = ({
             </p>
           </div>
         ) : (
-          <div className="z-10 w-full flex flex-col items-center justify-center gap-6">
+          <div className="z-10 w-full flex flex-col items-center justify-center gap-4">
             {/* Reactant items grid in chamber */}
-            <div className="flex flex-wrap items-center justify-center gap-3 max-w-lg">
+            <div className="flex flex-wrap items-center justify-center gap-2 max-w-lg max-h-[130px] overflow-y-auto shelf-scroll-area p-1">
               {slots.map((item, idx) => (
                 <div
                   key={item.instanceId}
-                  className="group relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 shadow-lg hover:border-cyan-500/60 transition-all duration-200 animate-scale-up"
+                  className="group relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700 shadow-md hover:border-cyan-500/60 transition-all duration-200 animate-scale-up"
                   style={{
                     borderColor: `${item.color}55`,
                     boxShadow: `0 0 15px ${item.color}15`,
                   }}
                 >
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-sm text-slate-950 shadow-md"
+                    className="w-7 h-7 rounded-lg flex items-center justify-center font-mono font-bold text-xs text-slate-950 shadow-md"
                     style={{ backgroundColor: item.color }}
                   >
                     {item.symbolOrFormula}
                   </div>
                   <div className="text-left">
-                    <span className="text-xs font-semibold text-slate-200 block truncate max-w-[110px]">
+                    <span className="text-xs font-semibold text-slate-200 block truncate max-w-[100px]">
                       {item.name}
                     </span>
-                    <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">
+                    <span className="text-[9px] text-slate-400 uppercase font-mono tracking-wider">
                       {item.type}
                     </span>
                   </div>
@@ -507,7 +507,7 @@ export const Crucible: React.FC<CrucibleProps> = ({
       </div>
 
       {/* Conditions Panel: Heat, Electricity, Catalyst */}
-      <div className="mt-4 pt-4 border-t border-slate-800/80 z-10">
+      <div className="mt-3 pt-3 border-t border-slate-800/80 z-10 shrink-0">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider">
             Environmental Energy Controls
@@ -587,13 +587,13 @@ export const Crucible: React.FC<CrucibleProps> = ({
       </div>
 
       {/* Synthesis Action Button */}
-      <div className="mt-4 pt-2 z-10">
+      <div className="mt-3 pt-1 z-10 shrink-0">
         <button
           id="btn-synthesize-action"
           type="button"
           onClick={onSynthesize}
           disabled={slots.length === 0 || isSynthesizing}
-          className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-3 shadow-xl ${
+          className={`w-full py-3 px-6 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-3 shadow-xl ${
             slots.length === 0
               ? 'bg-slate-800/60 text-slate-500 border border-slate-800 cursor-not-allowed'
               : predictedProduct

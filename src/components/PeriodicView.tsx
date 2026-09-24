@@ -69,9 +69,9 @@ export const PeriodicView: React.FC<PeriodicViewProps> = ({
                 setSelectedElement(elem);
                 soundFx.playAtomClick(1.1);
               }}
-              className={`flex flex-col p-4 rounded-2xl border transition-all duration-200 cursor-pointer select-none ${
+              className={`flex flex-col p-4 rounded-2xl border transition-colors duration-150 cursor-pointer select-none active:scale-[0.98] ${
                 isUnlocked
-                  ? 'bg-slate-900/70 border-slate-800 hover:border-purple-500/60 hover:bg-slate-900/90 shadow-sm hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:scale-[1.02]'
+                  ? 'bg-slate-900/70 border-slate-800 hover:border-purple-500/60 hover:bg-slate-900/90 shadow-sm hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]'
                   : 'bg-slate-950/40 border-slate-850 opacity-60 hover:opacity-80'
               }`}
               style={{
@@ -127,7 +127,7 @@ export const PeriodicView: React.FC<PeriodicViewProps> = ({
       {selectedElement && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
           <div
-            className="relative w-full max-w-md rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6"
+            className="relative w-full max-w-md rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6 max-h-[90vh] overflow-y-auto custom-scrollbar"
             style={{ boxShadow: `0 0 50px ${selectedElement.color}30` }}
           >
             <div className="flex items-start justify-between">

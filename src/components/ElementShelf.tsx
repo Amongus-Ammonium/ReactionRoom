@@ -99,8 +99,8 @@ export const ElementShelf: React.FC<ElementShelfProps> = ({
       </div>
 
       {/* Elements Grid */}
-      <div className="flex-1 overflow-y-auto mt-3 pr-1 space-y-2 min-h-[160px] max-h-[360px] md:max-h-none">
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden mt-3 pr-1 space-y-2 shelf-scroll-area">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pb-1">
           {filtered.map((elem) => (
             <div
               key={elem.id}
@@ -112,7 +112,7 @@ export const ElementShelf: React.FC<ElementShelfProps> = ({
               }}
               onMouseEnter={() => setHoveredElement(elem)}
               onMouseLeave={() => setHoveredElement(null)}
-              className="group relative flex flex-col p-2.5 rounded-xl bg-slate-950/50 border border-slate-800/90 hover:border-cyan-500/60 hover:bg-slate-900/80 cursor-pointer select-none transition-all duration-200 hover:scale-[1.02] shadow-sm hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+              className="group relative flex flex-col p-2.5 rounded-xl bg-slate-950/50 border border-slate-800/90 hover:border-cyan-500/60 hover:bg-slate-900/80 cursor-pointer select-none transition-colors duration-150 active:scale-[0.98] shadow-sm hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]"
               style={{
                 borderLeftWidth: '3px',
                 borderLeftColor: elem.color,
@@ -129,7 +129,7 @@ export const ElementShelf: React.FC<ElementShelfProps> = ({
 
               <div className="my-1 text-center">
                 <span
-                  className="font-mono font-extrabold text-2xl tracking-tight transition-transform group-hover:scale-110 inline-block"
+                  className="font-mono font-extrabold text-2xl tracking-tight inline-block"
                   style={{ color: elem.color }}
                 >
                   {elem.symbol}
@@ -151,23 +151,35 @@ export const ElementShelf: React.FC<ElementShelfProps> = ({
         )}
       </div>
 
-      {/* Hover preview inspector footer */}
-      {hoveredElement && (
-        <div className="mt-3 pt-3 border-t border-slate-800/80 text-xs flex items-start gap-2 animate-fade-in bg-slate-950/40 p-2.5 rounded-xl">
-          <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-          <div>
-            <div className="font-semibold text-slate-200 flex items-center gap-2">
-              <span>{hoveredElement.name} ({hoveredElement.symbol})</span>
-              <span className="text-[10px] font-mono text-slate-400">
-                Mass: {hoveredElement.atomicMass} u
-              </span>
+      {/* Permanently allocated inspector footer (eliminates layout shift & violent scrolling) */}
+      <div className="mt-3 pt-2.5 border-t border-slate-800/80 h-[68px] min-h-[68px] shrink-0 text-xs flex items-center bg-slate-950/50 px-3 py-2 rounded-xl border border-slate-800/40 overflow-hidden">
+        {hoveredElement ? (
+          <div className="flex items-start gap-2.5 w-full min-w-0 animate-fade-in">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-xs text-slate-950 shrink-0 shadow-sm mt-0.5"
+              style={{ backgroundColor: hoveredElement.color }}
+            >
+              {hoveredElement.symbol}
             </div>
-            <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
-              {hoveredElement.description}
-            </p>
+            <div className="min-w-0 flex-1">
+              <div className="font-semibold text-slate-200 flex items-center justify-between gap-1">
+                <span className="truncate">{hoveredElement.name}</span>
+                <span className="text-[10px] font-mono text-cyan-400 shrink-0">
+                  #{hoveredElement.atomicNumber} • {hoveredElement.atomicMass} u
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-2 leading-tight">
+                {hoveredElement.description}
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="flex items-center gap-2.5 text-slate-500 text-[11px] w-full">
+            <Info className="w-4 h-4 text-cyan-500/70 shrink-0" />
+            <span>Hover or drag any element to inspect atomic mass & structure</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
