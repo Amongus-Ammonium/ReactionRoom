@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, BookOpen, Lock, CheckCircle, HelpCircle, ShieldAlert, Sparkles, Filter, ExternalLink, Lightbulb } from 'lucide-react';
 import { Compound, CompoundCategory } from '../types';
 import { soundFx } from '../utils/audio';
+import { matchesCompoundQuery } from '../utils/chemistry';
 
 interface CompendiumViewProps {
   allCompounds: Compound[];
@@ -48,11 +49,7 @@ export const CompendiumView: React.FC<CompendiumViewProps> = ({
     if (category !== 'all' && c.category !== category) return false;
 
     if (search.trim()) {
-      const q = search.toLowerCase();
-      const matchName = c.name.toLowerCase().includes(q);
-      const matchFormula = c.formula.toLowerCase().includes(q);
-      const matchCat = c.category.toLowerCase().includes(q);
-      if (!matchName && !matchFormula && !matchCat) return false;
+      if (!matchesCompoundQuery(c, search)) return false;
     }
 
     return true;

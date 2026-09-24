@@ -110,10 +110,65 @@ export const ALTERNATIVE_RECIPES: AlternativeRecipe[] = [
   // Carbonates & Bicarbonates
   { compoundId: 'CaCO3', reactants: ['CaOH2', 'CO2'] },
   { compoundId: 'CaCO3', reactants: ['CaO', 'CO2'] },
-  { compoundId: 'NaHCO3', reactants: ['NaOH', 'CO2'] },
+  { compoundId: 'CaCO3', reactants: ['CaOH2', 'H2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaO', 'H2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['Ca', 'C', 'O'] },
+  { compoundId: 'CaCO3', reactants: ['Ca', 'C', 'O', 'O', 'O'] },
+  { compoundId: 'CaCO3', reactants: ['Ca', 'CO2'], condition: { heat: true } },
+  { compoundId: 'CaCO3', reactants: ['CaO', 'C', 'O'] },
+  { compoundId: 'CaCO3', reactants: ['CaCl2', 'Na2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaCl2', 'K2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaCl2', 'NaHCO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaNO32', 'Na2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaNO32', 'K2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaOH2', 'Na2CO3'] },
+  { compoundId: 'CaCO3', reactants: ['CaOH2', 'K2CO3'] },
+
+  { compoundId: 'CaHCO32', reactants: ['CaCO3', 'H2CO3'] },
+  { compoundId: 'CaHCO32', reactants: ['CaCO3', 'CO2'] },
+  { compoundId: 'CaHCO32', reactants: ['CaCO3', 'CO2', 'H2O'] },
+  { compoundId: 'CaHCO32', reactants: ['CaOH2', 'CO2', 'CO2'] },
+
+  { compoundId: 'MgCO3', reactants: ['MgOH2', 'CO2'] },
+  { compoundId: 'MgCO3', reactants: ['MgO', 'CO2'] },
+  { compoundId: 'MgCO3', reactants: ['MgOH2', 'H2CO3'] },
+  { compoundId: 'MgCO3', reactants: ['MgO', 'H2CO3'] },
+  { compoundId: 'MgCO3', reactants: ['Mg', 'C', 'O'] },
+  { compoundId: 'MgCO3', reactants: ['Mg', 'C', 'O', 'O', 'O'] },
+  { compoundId: 'MgCO3', reactants: ['MgCl2', 'Na2CO3'] },
+  { compoundId: 'MgCO3', reactants: ['MgCl2', 'K2CO3'] },
+
+  { compoundId: 'MgHCO32', reactants: ['MgCO3', 'H2CO3'] },
+  { compoundId: 'MgHCO32', reactants: ['MgCO3', 'CO2'] },
+  { compoundId: 'MgHCO32', reactants: ['MgOH2', 'CO2', 'CO2'] },
+
   { compoundId: 'Na2CO3', reactants: ['NaOH', 'CO2'], condition: { heat: true } },
-  { compoundId: 'KHCO3', reactants: ['KOH', 'CO2'] },
+  { compoundId: 'Na2CO3', reactants: ['NaOH', 'H2CO3'] },
+  { compoundId: 'Na2CO3', reactants: ['Na2O', 'CO2'] },
+  { compoundId: 'Na2CO3', reactants: ['Na', 'C', 'O'] },
+  { compoundId: 'Na2CO3', reactants: ['Na', 'Na', 'C', 'O', 'O', 'O'] },
+  { compoundId: 'NaHCO3', reactants: ['NaOH', 'CO2'] },
+  { compoundId: 'NaHCO3', reactants: ['Na2CO3', 'H2CO3'] },
+  { compoundId: 'NaHCO3', reactants: ['Na2CO3', 'CO2', 'H2O'] },
+
   { compoundId: 'K2CO3', reactants: ['KOH', 'CO2'], condition: { heat: true } },
+  { compoundId: 'K2CO3', reactants: ['KOH', 'H2CO3'] },
+  { compoundId: 'K2CO3', reactants: ['K2O', 'CO2'] },
+  { compoundId: 'K2CO3', reactants: ['K', 'C', 'O'] },
+  { compoundId: 'KHCO3', reactants: ['KOH', 'CO2'] },
+  { compoundId: 'KHCO3', reactants: ['K2CO3', 'H2CO3'] },
+
+  { compoundId: 'FeCO3', reactants: ['FeOH2', 'H2CO3'] },
+  { compoundId: 'FeCO3', reactants: ['FeO', 'CO2'] },
+  { compoundId: 'FeCO3', reactants: ['FeCl2', 'Na2CO3'] },
+  { compoundId: 'FeCO3', reactants: ['FeSO4', 'Na2CO3'] },
+  { compoundId: 'FeCO3', reactants: ['Fe', 'C', 'O'] },
+
+  { compoundId: 'CuCO3', reactants: ['CuOH2', 'H2CO3'] },
+  { compoundId: 'CuCO3', reactants: ['CuO', 'CO2'] },
+  { compoundId: 'CuCO3', reactants: ['CuSO4', 'Na2CO3'] },
+  { compoundId: 'CuCO3', reactants: ['CuCl2', 'Na2CO3'] },
+  { compoundId: 'CuCO3', reactants: ['Cu', 'C', 'O'] },
 
   // Hydration of Oxides (Slaking & Acid formation)
   { compoundId: 'CaOH2', reactants: ['CaO', 'H2O'] },
@@ -408,6 +463,45 @@ function evaluateDynamicChemistry(
     if (base.includes('K') && acid === 'H2SO4') return ALL_COMPOUNDS.find(c => c.id === 'K2SO4') || null;
     if (base.includes('Ca') && acid === 'H2SO4') return ALL_COMPOUNDS.find(c => c.id === 'CaSO4') || null;
     if (base.includes('Mg') && acid === 'H2SO4') return ALL_COMPOUNDS.find(c => c.id === 'MgSO4') || null;
+
+    if (base.includes('Ca') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'CaCO3') || null;
+    if (base.includes('Mg') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'MgCO3') || null;
+    if (base.includes('Na') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'Na2CO3') || null;
+    if (base.includes('K') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'K2CO3') || null;
+    if (base.includes('Li') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'Li2CO3') || null;
+    if (base.includes('Fe') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'FeCO3') || null;
+    if (base.includes('Cu') && acid === 'H2CO3') return ALL_COMPOUNDS.find(c => c.id === 'CuCO3') || null;
+  }
+
+  // Rule 9: Carbon Dioxide Carbonation (Basic Hydroxide or Oxide + CO2 -> Carbonate)
+  if (r1 === 'CO2' || r2 === 'CO2') {
+    const reagent = r1 === 'CO2' ? r2 : r1;
+    if (reagent === 'CaOH2' || reagent === 'CaO') return ALL_COMPOUNDS.find(c => c.id === 'CaCO3') || null;
+    if (reagent === 'MgOH2' || reagent === 'MgO') return ALL_COMPOUNDS.find(c => c.id === 'MgCO3') || null;
+    if (reagent === 'NaOH' || reagent === 'Na2O') {
+      return conditions.heat
+        ? ALL_COMPOUNDS.find(c => c.id === 'Na2CO3') || null
+        : ALL_COMPOUNDS.find(c => c.id === 'NaHCO3') || null;
+    }
+    if (reagent === 'KOH' || reagent === 'K2O') {
+      return conditions.heat
+        ? ALL_COMPOUNDS.find(c => c.id === 'K2CO3') || null
+        : ALL_COMPOUNDS.find(c => c.id === 'KHCO3') || null;
+    }
+    if (reagent === 'LiOH' || reagent === 'Li2O') return ALL_COMPOUNDS.find(c => c.id === 'Li2CO3') || null;
+    if (reagent === 'FeO') return ALL_COMPOUNDS.find(c => c.id === 'FeCO3') || null;
+    if (reagent === 'CuO') return ALL_COMPOUNDS.find(c => c.id === 'CuCO3') || null;
+  }
+
+  // Rule 10: Double Displacement / Precipitation to insoluble carbonates
+  const isSolubleCarbonate = (id: string) => ['Na2CO3', 'K2CO3', 'NaHCO3', 'KHCO3'].includes(id);
+  if (isSolubleCarbonate(r1) || isSolubleCarbonate(r2)) {
+    const salt = isSolubleCarbonate(r1) ? r2 : r1;
+    if (['CaCl2', 'CaNO32', 'CaOH2'].includes(salt)) return ALL_COMPOUNDS.find(c => c.id === 'CaCO3') || null;
+    if (['MgCl2', 'MgNO32', 'MgOH2'].includes(salt)) return ALL_COMPOUNDS.find(c => c.id === 'MgCO3') || null;
+    if (['FeCl2', 'FeSO4'].includes(salt)) return ALL_COMPOUNDS.find(c => c.id === 'FeCO3') || null;
+    if (['CuSO4', 'CuCl2'].includes(salt)) return ALL_COMPOUNDS.find(c => c.id === 'CuCO3') || null;
+    if (salt === 'AgNO3') return ALL_COMPOUNDS.find(c => c.id === 'Ag2CO3') || null;
   }
 
   return null;
@@ -773,4 +867,46 @@ export function getRecipeClassHint(compound: Compound): RecipeClassHint {
     hasElectricity: Boolean(cond?.electricity),
     hasCatalyst: Boolean(cond?.catalyst),
   };
+}
+
+/**
+ * Normalizes chemical formulas and search queries by converting unicode subscripts/superscripts
+ * to standard digits and lowercase, allowing flexible search queries like 'caco3', 'CaCo3', 'h2o', 'co2'.
+ */
+export function normalizeFormulaQuery(str: string): string {
+  if (!str) return '';
+  return str
+    .replace(/[₀⁰]/g, '0')
+    .replace(/[₁¹]/g, '1')
+    .replace(/[₂²]/g, '2')
+    .replace(/[₃³]/g, '3')
+    .replace(/[₄⁴]/g, '4')
+    .replace(/[₅⁵]/g, '5')
+    .replace(/[₆⁶]/g, '6')
+    .replace(/[₇⁷]/g, '7')
+    .replace(/[₈⁸]/g, '8')
+    .replace(/[₉⁹]/g, '9')
+    .toLowerCase()
+    .trim();
+}
+
+/**
+ * Universal tolerant search predicate for chemical compounds.
+ * Matches compound name, standard ID formula, formatted unicode formula, and category.
+ * Accommodates lowercase queries, mixed case (e.g. 'CaCo3'), and ASCII numbers.
+ */
+export function matchesCompoundQuery(compound: Compound, rawQuery: string): boolean {
+  if (!rawQuery || !rawQuery.trim()) return true;
+  const q = rawQuery.trim().toLowerCase();
+  const qNorm = normalizeFormulaQuery(rawQuery);
+
+  if (compound.name.toLowerCase().includes(q)) return true;
+  if (compound.id.toLowerCase().includes(q) || compound.id.toLowerCase().includes(qNorm)) return true;
+  if (compound.category.toLowerCase().includes(q)) return true;
+
+  const formulaNorm = normalizeFormulaQuery(compound.formula);
+  if (formulaNorm.includes(qNorm) || formulaNorm.includes(q)) return true;
+  if (compound.formula.toLowerCase().includes(q)) return true;
+
+  return false;
 }

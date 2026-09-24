@@ -5088,19 +5088,19 @@
     "formula": "CaCO₃",
     "category": "salt",
     "state": "solid",
-    "appearance": "White or colored crystalline carbonate mineral salt",
-    "description": "Salt produced by acid-base neutralization between Calcium hydroxide and H2CO3.",
+    "appearance": "White crystalline mineral or chalk powder",
+    "description": "Essential mineral forming limestone, marble, and chalk. Synthesized by reacting slaked lime with carbon dioxide (the limewater test), quicklime with CO2, or precipitation.",
     "hazard": "safe",
     "bondType": "ionic",
     "color": "#e2e8f0",
     "glowColor": "rgba(56, 189, 248, 0.4)",
     "recipe": [
       "CaOH2",
-      "H2CO3"
+      "CO2"
     ],
-    "equation": "CaOH2 + H2CO3 → CaCO₃ + H₂O",
-    "enthalpy": "ΔH° = -1200 kJ/mol",
-    "funFact": "Used in agricultural fertilizer, mineral crystal growth, and industrial chemistry."
+    "equation": "Ca(OH)₂ + CO₂ → CaCO₃ + H₂O",
+    "enthalpy": "ΔH° = -1207 kJ/mol",
+    "funFact": "The classic limewater test! Bubbling CO2 into limewater forms cloudy insoluble CaCO3 precipitate. Also the main constituent of eggshells, pearls, and seashells."
   },
   {
     "id": "CaSO4",
@@ -6146,19 +6146,19 @@
     "formula": "MgCO₃",
     "category": "salt",
     "state": "solid",
-    "appearance": "White or colored crystalline carbonate mineral salt",
-    "description": "Salt produced by acid-base neutralization between Magnesium hydroxide and H2CO3.",
+    "appearance": "White mineral powder or crystalline salt",
+    "description": "Essential mineral (magnesite) and drying agent used by gymnasts and climbers. Synthesized by carbonation of magnesium hydroxide or oxide.",
     "hazard": "safe",
     "bondType": "ionic",
     "color": "#e2e8f0",
     "glowColor": "rgba(56, 189, 248, 0.4)",
     "recipe": [
       "MgOH2",
-      "H2CO3"
+      "CO2"
     ],
-    "equation": "MgOH2 + H2CO3 → MgCO₃ + H₂O",
-    "enthalpy": "ΔH° = -1200 kJ/mol",
-    "funFact": "Used in agricultural fertilizer, mineral crystal growth, and industrial chemistry."
+    "equation": "Mg(OH)₂ + CO₂ → MgCO₃ + H₂O",
+    "enthalpy": "ΔH° = -1096 kJ/mol",
+    "funFact": "Known as 'gym chalk' used by powerlifters and gymnasts to dry sweat and maximize grip friction."
   },
   {
     "id": "Mg3PO42",
@@ -8337,19 +8337,19 @@
     "formula": "Ca(HCO₃)₂",
     "category": "salt",
     "state": "solid",
-    "appearance": "Crystalline mineral or powder salt",
-    "description": "Formed through acid-base neutralization or precipitation.",
+    "appearance": "White powder or soluble aqueous bicarbonate ion complex",
+    "description": "Formed when calcium carbonate dissolves in water containing dissolved CO2 or carbonic acid, causing temporary water hardness.",
     "hazard": "safe",
     "bondType": "ionic",
     "color": "#cbd5e1",
     "glowColor": "rgba(56, 189, 248, 0.4)",
     "recipe": [
-      "CaOH2",
-      "CO2"
+      "CaCO3",
+      "H2CO3"
     ],
-    "equation": "CaOH2 + CO2 → Ca(HCO₃)₂",
+    "equation": "CaCO₃ + H₂CO₃ → Ca(HCO₃)₂",
     "enthalpy": "ΔH° = -600 to -1400 kJ/mol",
-    "funFact": "Widely deployed in analytical chemistry, food science, and mining metallurgy."
+    "funFact": "Responsible for temporary water hardness, karst topography, limestone cave stalactites, and stalagmites."
   },
   {
     "id": "MgHCO32",
@@ -8357,19 +8357,19 @@
     "formula": "Mg(HCO₃)₂",
     "category": "salt",
     "state": "solid",
-    "appearance": "Crystalline mineral or powder salt",
-    "description": "Formed through acid-base neutralization or precipitation.",
+    "appearance": "White mineral powder or soluble aqueous bicarbonate complex",
+    "description": "Formed when magnesium carbonate dissolves in carbonic acid or water saturated with CO2.",
     "hazard": "safe",
     "bondType": "ionic",
     "color": "#cbd5e1",
     "glowColor": "rgba(56, 189, 248, 0.4)",
     "recipe": [
-      "MgOH2",
-      "CO2"
+      "MgCO3",
+      "H2CO3"
     ],
-    "equation": "MgOH2 + CO2 → Mg(HCO₃)₂",
+    "equation": "MgCO₃ + H₂CO₃ → Mg(HCO₃)₂",
     "enthalpy": "ΔH° = -600 to -1400 kJ/mol",
-    "funFact": "Widely deployed in analytical chemistry, food science, and mining metallurgy."
+    "funFact": "Contributes to mineral spring effervescence and temporary water hardness in dolomitic aquifers."
   },
   {
     "id": "Na2SO3",

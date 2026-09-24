@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, Plus, FlaskConical, AlertTriangle, ShieldCheck, Flame, Skull, Radio, Info } from 'lucide-react';
 import { Compound, CompoundCategory, HazardLevel } from '../types';
 import { soundFx } from '../utils/audio';
+import { matchesCompoundQuery } from '../utils/chemistry';
 
 interface CompoundShelfProps {
   discoveredCompounds: Compound[];
@@ -50,9 +51,7 @@ export const CompoundShelf: React.FC<CompoundShelfProps> = ({
   const [hoveredCompound, setHoveredCompound] = useState<Compound | null>(null);
 
   const filtered = discoveredCompounds.filter((comp) => {
-    const matchesSearch =
-      comp.name.toLowerCase().includes(search.toLowerCase()) ||
-      comp.formula.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = matchesCompoundQuery(comp, search);
     const matchesCat = selectedCat === 'all' || comp.category === selectedCat;
     return matchesSearch && matchesCat;
   });

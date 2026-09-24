@@ -17,7 +17,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { ReactorSlotItem, ReactionCondition, Compound } from '../types';
-import { getRecipeClassHint, getBaseElementsForCompound } from '../utils/chemistry';
+import { getRecipeClassHint, getBaseElementsForCompound, matchesCompoundQuery } from '../utils/chemistry';
 import { soundFx } from '../utils/audio';
 
 interface CrucibleProps {
@@ -108,12 +108,7 @@ export const Crucible: React.FC<CrucibleProps> = ({
       }).slice(0, 35);
     }
     return allCompounds
-      .filter(
-        (c) =>
-          c.name.toLowerCase().includes(q) ||
-          c.formula.toLowerCase().includes(q) ||
-          c.category.toLowerCase().includes(q)
-      )
+      .filter((c) => matchesCompoundQuery(c, pickerSearch))
       .slice(0, 35);
   }, [allCompounds, pickerSearch, discoveredCompoundIds]);
 
